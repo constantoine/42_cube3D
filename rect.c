@@ -6,11 +6,12 @@
 /*   By: cleo <cleo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 15:14:03 by cleo              #+#    #+#             */
-/*   Updated: 2020/03/30 16:31:53 by cleo             ###   ########.fr       */
+/*   Updated: 2020/03/30 20:14:55 by cleo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rect.h"
+# include <stdlib.h>
 
 void	put_rect(t_game *game, t_rect *rect, t_color color)
 {
@@ -35,18 +36,20 @@ void	put_rect(t_game *game, t_rect *rect, t_color color)
 	mlx_put_image_to_window(game->mlx_ptr, game->mlx_window, img.img, rect->x, rect->y);
 }
 
-t_rect	new_rect(int x, int y, int width, int heigth)
+t_rect	*new_rect(size_t x, size_t y, size_t width, size_t heigth)
 {
-	t_rect	rect;
+	t_rect	*rect;
 
-	rect.x = x;
-	rect.width = width;
-	rect.y = y;
-	rect.heigth = heigth;
+	if (!(rect = malloc(sizeof(t_rect))))
+		return (NULL);
+	rect->x = x;
+	rect->width = width;
+	rect->y = y;
+	rect->heigth = heigth;
 	return (rect);
 }
 
-bool	is_inside(int x, int y, t_rect *rect)
+bool	is_inside(size_t x, size_t y, t_rect *rect)
 {
 	if (x >= rect->x && x <= rect->x + rect->width)
 		if (y >= rect->y && y <= rect->y + rect->heigth)

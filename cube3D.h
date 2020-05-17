@@ -6,19 +6,24 @@
 /*   By: cleo <cleo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 15:16:35 by cleo              #+#    #+#             */
-/*   Updated: 2020/03/30 15:20:00 by cleo             ###   ########.fr       */
+/*   Updated: 2020/03/30 19:50:38 by cleo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-#include "colors.h"
+# include "colors.h"
+# include "widget.h"
+
+typedef struct	s_tree	t_tree;
+typedef struct	s_rect	t_rect;
 
 typedef struct	s_game
 {
-	void *mlx_ptr;
-	void *mlx_window;
+	void	*mlx_ptr;
+	void	*mlx_window;
+	t_tree	*menu_ui;
 }				t_game;
 
 typedef struct	s_image
